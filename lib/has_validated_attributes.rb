@@ -53,11 +53,11 @@ module HasValidatedAttributes
               rails_name: { format: { with: /\A[a-zA-Z\_]*?\z/u, message: "should only include underscores and letters" } },
               ## the regex for emails comes from
               ##   http://haacked.com/archive/2007/08/21/i-knew-how-to-validate-an-email-address-until-i.aspx/
-              email: { length: { maximum: 63 }, format: { with: /\A((?!\.)("([^"\\r\\n]|\\["\\r\\n])*"|[-a-z0-9!#$%&'*+\/=?^_`{|}~"]+(?:\.[-a-z0-9!#$%&'*+\/=?^_`{|}~"]+)*)(?<!\.)@[a-z0-9_](?!.*\.\.)(?!.*[~*\/\\'(),])(?:[a-z0-9_-]*[a-z0-9])?(?:\.[a-z0-9_-]*[a-z0-9])*\.[a-z]{2,})\z/i, message: "should look like an email address" }, has_if?: true },
-              phone_number: { numericality: { greater_than_or_equal_to: 1000000000, less_than: 10000000000, message: "accepts only 10 numbers and (),.- characters and must not be all 0s" }, has_if?: true },
+              email: { length: { maximum: 63 }, format: { with: /\A((?!\.)("([^"\\r\\n]|\\["\\r\\n])*"|[-a-z0-9!#$%&'*+\/=?^_`{|}~"]+(?:\.[-a-z0-9!#$%&'*+\/=?^_`{|}~"]+)*)(?<!\.)@[a-z0-9_](?!.*\.\.)(?!.*[~*\/\\'(),])(?:[a-z0-9_-]*[a-z0-9])?(?:\.[a-z0-9_-]*[a-z0-9])*\.[a-z]{2,})\z/i, message: "Email should look like an email address" }, has_if?: true },
+              phone_number: { numericality: { greater_than_or_equal_to: 1000000000, less_than: 10000000000, message: "Phone Number accepts only 10 numbers and (),.- characters and must not be all 0s" }, has_if?: true },
               phone_extension: { length: { maximum: 7 }, format: { with: /\A\d+([\dxX]*\d)?\z/, message: 'accepts only numbers (0-9) and "x"' }, has_if?: true },
               domain: { length: { maximum: 63 }, format: { with: /[a-z0-9-]+\.[a-z0-9\-\/\.]+/, message: "should look like a domain name" }, has_if?: true },
-              zipcode: { format: { with: /\A\d{5}(\d{4})?\z/, message: "must contain 5 or 9 numbers" }, has_if?: true },
+              zipcode: { format: { with: /\A\d{5}(\d{4})?\z/, message: "Zip Code must contain 5 or 9 numbers" }, has_if?: true },
               middle_initial: { format: { with: /\A[a-zA-Z]{0,1}\z/u, message: "accepts only one letter" } },
               dollar: { format: { with: /\A-?[0-9]{0,12}(\.[0-9]{0,2})?\z/, message: "accepts only numeric characters, period, and negative sign" }, numericality: { greater_than: -1000000000000, less_than: 1000000000000 }, allow_nil: true },
               positive_dollar: { format: { with: /\A[0-9]{0,12}(\.[0-9]{0,2})?\z/, message: "accepts only numeric characters, period" }, numericality: { greater_than_or_equal_to: 0, less_than: 1000000000000 }, allow_nil: true },
@@ -66,7 +66,7 @@ module HasValidatedAttributes
               comparative_percent: { format: { with: /\A-?[0-9]{0,4}(\.[0-9]{0,4})?\z/, message: "accepts only numeric characters, period and a negative sign" }, has_if?: true },
               positive_comparative_percent: { format: { with: /\A[0-9]{0,4}(\.[0-9]{0,4})?\z/, message: "accepts only numeric characters and a period" }, allow_nil: true },
               url: { length: { maximum: 255 }, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "web address isnt valid" }, has_if?: true },
-              social_security_number: { length: { is: 9 }, numericality: { greater_than_or_equal_to: 0, less_than: 1000000000, message: "must be in the format 111-11-1111" }, has_if?: true },
+              social_security_number: { length: { is: 9, message: "SSN is the wrong length (should be 9 characters)" }, numericality: { greater_than_or_equal_to: 0, less_than: 1000000000, message: "SSN must be in the format 111-11-1111" }, has_if?: true },
               taxid: { length: { is: 9 }, numericality: { greater_than_or_equal_to: 9999999, less_than: 1000000000, message: "must be in the format 11-1111111" }, has_if?: true },
               age: { numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 110, message: "must contain only 3 numbers and less than 110" }, has_if?: true },
               number: { numericality: { message: "accepts only numbers (0-9)" }, has_if?: true },
