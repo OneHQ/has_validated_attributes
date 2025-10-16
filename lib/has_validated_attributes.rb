@@ -49,7 +49,7 @@ module HasValidatedAttributes
   # loading all methods dynamically
   validations name: { format: { with: NO_CONTROL_CHARS_REGEX, message: NO_CONTROL_CHARS_ERROR_MSG }, length: { maximum: 63 }, has_if?: true },
               safe_text: { safe_text: true, has_if?: true },
-              username: { length: { within: 5..127 }, format: { with: /\A\w[\w\.\-_@]+\z/, message: "use only letters, numbers, and .-_@ please" }, uniqueness: true, has_if?: true },
+              username: { length: { within: 5..127 }, format: { with: /\A\w[\w\.\-\+_@]+\z/, message: "use only letters, numbers, and .-+_@ please" }, uniqueness: true, has_if?: true },
               rails_name: { format: { with: /\A[a-zA-Z\_]*?\z/u, message: "should only include underscores and letters" } },
               ## the regex for emails comes from
               ##   http://haacked.com/archive/2007/08/21/i-knew-how-to-validate-an-email-address-until-i.aspx/

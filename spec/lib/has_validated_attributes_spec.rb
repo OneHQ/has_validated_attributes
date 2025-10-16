@@ -135,14 +135,22 @@ describe "HasValidatedAttributes", type: :model do
         comparative_percent_attr: "-250", positive_comparative_percent_attr: "250", number_attr: "1")
     end
 
-    it "should return error" do
+    it "with invalid usernames" do
       [">*,.<><", "<<< test", "Kansas City", "-- Hey --", "& youuuu", "21 Jump"].each do |value|
         @resource.username_attr = value
 
         expect(@resource.valid?).to be_falsey
 
         error_message = @resource.errors.full_messages.first
-        expect(error_message).to eq "Username attr use only letters, numbers, and .-_@ please for Username attr"
+        expect(error_message).to eq "Username attr use only letters, numbers, and .-+_@ please for Username attr"
+      end
+    end
+
+    it "with valid usernames" do
+      ["testuser","user_name","user.name","user-name","user+tag","user+tag@domain","user_123","john.doe-99"].each do |value|
+        @resource.username_attr = value
+
+        expect(@resource.valid?).to be_truthy
       end
     end
   end
