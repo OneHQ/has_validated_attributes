@@ -1,4 +1,4 @@
-# TESTHQ
+# HAS_VALIDATED_ATTRIBUTES
 
 # Changelog
 
