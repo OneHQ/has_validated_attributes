@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
   s.executables           = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.homepage              = "https://github.com/kylejginavan/has_validated_attributes"
   s.require_paths         = ["lib"]
-  s.rubygems_version      = "1.5.2"
   s.summary               = "Ruby on Rails gem for validate data prior to save"
 
   s.add_development_dependency "rails",                      ">= 6.0", "<= 8.1.1"
