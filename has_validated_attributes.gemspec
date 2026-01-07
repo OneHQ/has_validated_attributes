@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "rails",                      ">= 6.0", "<= 8.1.1"
 
-  s.add_development_dependency "byebug",                     "~> 12.0"
+  s.add_development_dependency "ostruct",                    "~> 0.6"
   s.add_development_dependency "pg",                         "~> 1.1"
   s.add_development_dependency "sprockets",                  "~> 3.0"
 
