@@ -8,7 +8,7 @@ rescue LoadError => e
 #{ e.path } is not loaded but is required when loading "has_validated_attributes/rspec"!
 
 Do you need to `gem install #{ e.path }`?
-ERROR_MSG
+  ERROR_MSG
 end
 
 Dir[Rails.root.join("spec/support/*.rb")].sort.each { |f| require f }
@@ -48,14 +48,14 @@ RSpec.shared_examples_for "name attribute" do |attr, length: HasValidatedAttribu
   ].
     select { |str| str.length <= length }.
     each do |str|
-      it { should allow_value(str).for(attr) }
-    end
+    it { should allow_value(str).for(attr) }
+  end
 
   ["\e1B", "\cF", "Hello\nWorld", "\eHey", "Oh\cFNo, it's a control char!"].
     select { |str| str.length <= length }.
     each do |str|
-      it { should_not allow_value(str).for(attr).with_message(HasValidatedAttributes.name_format[:format][:message].call(nil, attribute: attr.to_s.humanize)) }
-    end
+    it { should_not allow_value(str).for(attr).with_message(HasValidatedAttributes.name_format[:format][:message].call(nil, attribute: attr.to_s.humanize)) }
+  end
 end
 
 RSpec.shared_examples_for "username attribute" do |attr|
@@ -204,7 +204,6 @@ RSpec.shared_examples_for "age attribute" do |attr|
     it { should allow_value(value).for(attr) }
   end
 
-
   ["111", "-1", "abc", "&"].each do |value|
     it { should_not allow_value(value).for(attr).with_message(HasValidatedAttributes.age_format[:numericality][:message]) }
   end
@@ -235,7 +234,7 @@ RSpec.shared_examples_for "dollar attribute" do |attr, normalized: false|
 
   [
     "1,000,00", "$1,000.00", "1,000,000", "1 000 000.01",
-    "-1,000,00", "-$1,000.00", "-1,000,000", "-1 000 000.01"  # has_normalized_attributes may be used in concert with has_validated_attributes to cover these cases.
+    "-1,000,00", "-$1,000.00", "-1,000,000", "-1 000 000.01" # has_normalized_attributes may be used in concert with has_validated_attributes to cover these cases.
   ].each do |value|
     it { send(normalized ? :should : :should_not, allow_value(value).for(attr)) }
   end
@@ -251,7 +250,7 @@ RSpec.shared_examples_for "number attribute" do |attr, normalized: false|
   end
 
   [
-    "1,000,00", "1,000.00", "1,000,000", "1 000 000",  # has_normalized_attributes may be used in concert with has_validated_attributes to cover these cases.
+    "1,000,00", "1,000.00", "1,000,000", "1 000 000", # has_normalized_attributes may be used in concert with has_validated_attributes to cover these cases.
   ].each do |value|
     it { send(normalized ? :should : :should_not, allow_value(value).for(attr).with_message(HasValidatedAttributes.number_format[:numericality][:message])) }
   end
