@@ -14,9 +14,9 @@ end
 Dir[Rails.root.join("spec/support/*.rb")].sort.each { |f| require f }
 
 RSpec.configure do |config|
-  config.extend Module.new {
+  config.extend(Module.new do
     def has_validated_attribute(type, attr, *args, &block)
-      it_behaves_like "#{ type.gsub("_", " ") } attribute", attr, *args, &block
+      it_behaves_like "#{ type.tr("_", " ") } attribute", attr, *args, &block
     end
 
     # Provide dynamic methods wrappers to shared behaviors.
@@ -31,7 +31,7 @@ RSpec.configure do |config|
         super
       end
     end
-  }
+  end)
 end
 
 #= Load shared examples
