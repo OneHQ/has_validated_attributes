@@ -9,7 +9,7 @@ require "has_validated_attributes/version"
 Gem::Specification.new do |s|
   s.name                  = "has_validated_attributes"
   s.version               = HasValidatedAttributes::VERSION
-  s.required_ruby_version = ">= 3.0.0", "< 4.0.0"
+  s.required_ruby_version = ">= 3.4.0", "< 4.0.0"
   s.authors               = ["Kyle Ginavan"]
   s.date                  = "2010-05-18"
   s.description           = "has_validated_attributes is a Ruby on Rails gem that lets you validate your fields."
@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sprockets",                          "~> 3.0"
 
   # hq
-  s.add_development_dependency "has_normalized_attributes",          "~> 5.0.0"
+  s.add_development_dependency "has_normalized_attributes",          "~> 5.0"
 
-  s.add_development_dependency "testhq",                             "~> 5.0.0"
+  s.add_development_dependency "testhq",                             "~> 5.0"
 end
